@@ -940,22 +940,29 @@ Do not ask an agent to “implement this whole specification.”
 
 ## 22. V0.1 task map
 
-| Task | Goal | Depends on | Result |
-| --- | --- | --- | --- |
-| `TASK-001` | Repository foundation | — | Buildable pnpm monorepo with Fastify and React skeletons |
-| `TASK-002` | Domain and workflow model | 001 | Pure TypeScript entities, transitions and errors |
-| `TASK-003` | Local state and artifact storage | 002 | Filesystem `TaskStore`, `RunStore`, and `ArtifactStore` |
-| `TASK-004` | Git workspace and command runner | 001 | Safe worktree lifecycle and verification execution |
-| `TASK-005` | Codex App Server adapter | 001, 003, 004 | Provider-neutral Codex sessions and structured results |
-| `TASK-006` | In-process orchestration and API | 002–005 | End-to-end backend flow with approval/resume |
-| `TASK-007` | React control UI | 006 | Usable local control plane |
-| `TASK-008` | Golden-path hardening | 006, 007 | Manually verified V0.1 release candidate |
+| Task | Goal | Depends on | Status | Result |
+| --- | --- | --- | --- | --- |
+| `TASK-001` | Repository foundation | — | DONE | Buildable pnpm monorepo with Fastify and React skeletons |
+| `TASK-002` | Domain and workflow model | 001 | DONE | Pure TypeScript entities, transitions and errors |
+| `TASK-003` | Local state and artifact storage | 002 | NOT DONE | Filesystem `TaskStore`, `RunStore`, and `ArtifactStore` |
+| `TASK-004` | Git workspace and command runner | 001 | NOT DONE | Safe worktree lifecycle and verification execution |
+| `TASK-005` | Codex App Server adapter | 001, 003, 004 | NOT DONE | Provider-neutral Codex sessions and structured results |
+| `TASK-006` | In-process orchestration and API | 002–005 | NOT DONE | End-to-end backend flow with approval/resume |
+| `TASK-007` | React control UI | 006 | NOT DONE | Usable local control plane |
+| `TASK-008` | Golden-path hardening | 006, 007 | NOT DONE | Manually verified V0.1 release candidate |
 
 `TASK-003` and `TASK-004` may be implemented in either order. All other tasks should remain sequential unless their contracts are already stable.
 
 ---
 
 ## 23. TASK-001 — Repository foundation
+
+**Status:** DONE.
+
+**Acceptance evidence:** The workspace installs, `pnpm lint`, `pnpm typecheck`, `pnpm build`, and
+`pnpm check` pass; the Fastify health endpoint returned HTTP 200 with `{ "status": "ok" }`; the
+compiled Vite bundle served the project name. Validation was run under Node 24 with the documented
+Node 26 engine warning because Node 26 is not installed in the execution environment.
 
 ### Goal
 
@@ -995,6 +1002,13 @@ Create the pnpm monorepo and buildable application/package skeletons.
 ---
 
 ## 24. TASK-002 — Domain and workflow model
+
+**Status:** DONE.
+
+**Acceptance evidence:** Pure domain entities, typed errors, immutable workflow transitions, exact
+plan-artifact approval binding, approval superseding, bounded retry/review loops, domain events, and
+application ports are implemented. `pnpm --filter @ai-sdlc/workflow scenario` passed the golden path
+and limit scenarios; `pnpm check` passed. No automated test framework or later task was added.
 
 ### Goal
 

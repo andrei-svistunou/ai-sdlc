@@ -24,6 +24,7 @@ pnpm lint
 pnpm typecheck
 pnpm build
 pnpm check     # lint + typecheck + build
+pnpm --filter @ai-sdlc/workflow scenario  # Run the executable domain/workflow scenario
 ```
 
 The API listens on `http://127.0.0.1:3000` by default. `PORT`, `HOST`, and `LOG_LEVEL` may be set

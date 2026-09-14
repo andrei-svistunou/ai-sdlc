@@ -61,7 +61,14 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0(@types/node@26.5.1)(esbuild@0.28.2)(tsx@4.23.13)
 
-  packages/application: {}
+  packages/application:
+    dependencies:
+      '@ai-sdlc/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@ai-sdlc/workflow':
+        specifier: workspace:*
+        version: link:../workflow
 
   packages/config: {}
 
@@ -71,7 +78,11 @@ importers:
 
   packages/observability: {}
 
-  packages/workflow: {}
+  packages/workflow:
+    dependencies:
+      '@ai-sdlc/domain':
+        specifier: workspace:*
+        version: link:../domain
 
 packages:
 
