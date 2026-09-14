@@ -1,0 +1,21 @@
+{
+  "name": "@ai-sdlc/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint src --max-warnings=0",
+    "typecheck": "tsc -b --pretty false",
+    "build": "tsc -b --pretty false && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.0"
+  }
+}
